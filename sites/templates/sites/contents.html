@@ -1,0 +1,17 @@
+{% extends 'sites/base.html' %}
+{% block sites_active %}active{% endblock %}
+{% block title %}
+<div class="container">
+    <h1>Sites</h1>
+    </div>
+
+{% endblock %}
+{% block body %}
+<div class="container">
+    <ul class="list-group">
+        {% for site in object_list %}
+            <li class="list-group-item"><a href="{%url 'sites:detail' site.id %}">{{ site.name }}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

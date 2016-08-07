@@ -1,0 +1,28 @@
+{% extends 'sites/base.html' %}
+{% block sites_active %}active{% endblock %}
+{% block body %}
+<div class="container">
+  <h1>Site Details - {{ site.name }}</h1>
+    <table class="table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>A Value</th>
+                <th>B value</th>
+              </tr>
+            </thead>
+        <tbody>
+        {% for detail in site.detail_set.all %}
+        <tr>
+            <td>{{ detail.date}}</td>
+            <td>{{ detail.a_value}}</td>
+            <td>{{ detail.b_value}}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+        </table>
+    </div>
+
+
+
+{% endblock %}

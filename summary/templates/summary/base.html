@@ -1,0 +1,30 @@
+{% extends 'sites/base.html' %}
+{% block title %}
+    <div class="container">
+        <h1>Summary</h1>
+            <a class="btn btn-primary  {% block sum_active %}{% endblock %}" href="{% url 'summary:index'%}">Sum</a>
+            <a  class="btn btn-primary {% block average_active %}{% endblock %}" href="{% url 'summary:average'%}">Average</a>
+    </div>
+{% endblock %}
+{% block summary_active %}active{% endblock %}
+{% block body %}
+<div class="container">
+    <table class="table">
+            <thead>
+                <th>Site</th>
+                <th>A Value</th>
+                <th>B value</th>
+              </tr>
+            </thead>
+        <tbody>
+        {% for site_details in site_aggregate %}
+        <tr>
+            <td>{{ site_details.0  }}</td>
+            <td>{{ site_details.1 | floatformat:2}}</td>
+            <td>{{ site_details.2 | floatformat:2}}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+        </table>
+    </div>
+{% endblock %}
